@@ -1,6 +1,8 @@
 # Cascade
 Cascade is a Habbo Notification system that will notifie you when something new happens in your database based on various things and depending on what you have enabled or disabled via the configuration file included.
 
+Current version can be found here:
+
 #### Updates 1.1:
 * Improved query quality, faster and more specific i suppose...
 
