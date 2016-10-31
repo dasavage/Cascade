@@ -1,0 +1,7 @@
+c:\users\davinia\documents\visual studio 2015\Projects\Cascade\Cascade\bin\Debug\Cascade.exe.config
+c:\users\davinia\documents\visual studio 2015\Projects\Cascade\Cascade\bin\Debug\Cascade.exe
+c:\users\davinia\documents\visual studio 2015\Projects\Cascade\Cascade\bin\Debug\Cascade.pdb
+c:\users\davinia\documents\visual studio 2015\Projects\Cascade\Cascade\obj\Debug\Cascade.csprojResolveAssemblyReference.cache
+c:\users\davinia\documents\visual studio 2015\Projects\Cascade\Cascade\obj\Debug\Cascade.exe
+c:\users\davinia\documents\visual studio 2015\Projects\Cascade\Cascade\obj\Debug\Cascade.pdb
+c:\users\davinia\documents\visual studio 2015\Projects\Cascade\Cascade\bin\Debug\MySql.Data.dll
