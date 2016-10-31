@@ -173,7 +173,42 @@ namespace Cascade.Core.Cascade
                 return;
             }
 
-            _logManager.Log("New ban: " + Convert.ToString(latestBanRow["username"]) + " has been " + Convert.ToString(latestBanRow["bantype"]) + " banned.", LogType.Information);
+            string bannedUsername;
+
+            if (Convert.ToString(latestBanRow["bantype"]) == "user")
+            {
+                bannedUsername = Convert.ToString(latestBanRow["value"]);
+            }
+            else
+            {
+                mysqlConnection.SetQuery("SELECT COUNT(*) FROM `users` WHERE `ip_last` = @ipLast LIMIT 1");
+                mysqlConnection.AddParameter("ipLast", Convert.ToString(latestBanRow["value"]));
+
+                if (mysqlConnection.GetInteger() > 0)
+                {
+                    mysqlConnection.SetQuery("SELECT `username` FROM `users` WHERE `ip_last` = @ipLast LIMIT 1");
+                    mysqlConnection.AddParameter("ipLast", Convert.ToString(latestBanRow["value"]));
+                    bannedUsername = mysqlConnection.GetString();
+                }
+                else
+                {
+                    mysqlConnection.SetQuery("SELECT COUNT(*) FROM `users` WHERE `machine_id` = @machineId LIMIT 1");
+                    mysqlConnection.AddParameter("machineId", Convert.ToString(latestBanRow["value"]));
+
+                    if (mysqlConnection.GetInteger() > 0)
+                    {
+                        mysqlConnection.SetQuery("SELECT `username` FROM `users` WHERE `machine_id` = @machineId LIMIT 1");
+                        mysqlConnection.AddParameter("machineId", Convert.ToString(latestBanRow["value"]));
+                        bannedUsername = mysqlConnection.GetString();
+                    }
+                    else
+                    {
+                        bannedUsername = "Unknown User";
+                    }
+                }
+            }
+
+            _logManager.Log("New ban: " + bannedUsername + " has been " + Convert.ToString(latestBanRow["bantype"]) + " banned.", LogType.Information);
 
             lastBanRecordId = Convert.ToInt32(latestBanRow["id"]);
         }
@@ -279,6 +314,13 @@ namespace Cascade.Core.Cascade
 
                             userInformation.VipPoints = Convert.ToInt32(userRow["vip_points"]);
                         }
+
+
+                        if (userInformation.Username != Convert.ToString(userRow["username"]))
+                        {
+                            _logManager.Log("User changed username: " + userInformation.Username + " has changed their username to " + Convert.ToString(userRow["username"]) + ".", LogType.Information);
+                            userInformation.Username = Convert.ToString(userRow["username"]);
+                        }
                     }
 
                     continue;
@@ -292,7 +334,8 @@ namespace Cascade.Core.Cascade
                     Convert.ToInt32(userRow["rank"]),
                     Convert.ToInt32(userRow["credits"]),
                     Convert.ToInt32(userRow["activity_points"]),
-                    Convert.ToInt32(userRow["vip_points"])));
+                    Convert.ToInt32(userRow["vip_points"]),
+                    Convert.ToString(userRow["username"])));
             }
         }
     }

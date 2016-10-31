@@ -5,7 +5,7 @@ namespace Cascade.Core.Cascade
 {
     internal class CascadeUpdater
     {
-        // AAAAAAAAA System.Timers.Timer...
+        // ahhhh System.Timers.Timer...
 
         private readonly LogManager _logManager;
 
@@ -26,7 +26,7 @@ namespace Cascade.Core.Cascade
 
             if (configManager.ConfigElementExists("cascade.check_for_updates_every_x_minutes"))
             {
-                myTimer.Interval = int.Parse(configManager.GetConfigElement("casecade.check_for_updates_every_x_minutes")) * 60000;
+                myTimer.Interval = int.Parse(configManager.GetConfigElement("cascade.check_for_updates_every_x_minutes")) * 60000;
             }
 
             myTimer.Enabled = true;
@@ -39,7 +39,7 @@ namespace Cascade.Core.Cascade
 
             if (!string.IsNullOrEmpty(updateString) && Utility.ValidVersionString(updateString))
             {
-                _logManager.Log("Update Avalible: " + updateString + " is now avalible.", LogType.Warning);
+                _logManager.Log("Update Avalible: v" + updateString + " is now avalible.", LogType.Warning);
             }
         }
     }

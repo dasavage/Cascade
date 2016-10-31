@@ -92,6 +92,21 @@ namespace Cascade.Core.Database
             return dataTable;
         }
 
+        public string GetString()
+        {
+            try
+            {
+                var obj2 = _mysqlCommand.ExecuteScalar();
+                return obj2?.ToString() ?? string.Empty;
+            }
+            catch (Exception exception)
+            {
+                _logManager.Log("MySQL Error: " + exception.Message + "\r" + exception.StackTrace, LogType.Error);
+            }
+
+            return string.Empty;
+        }
+
         public int GetInteger()
         {
             var result = 0;

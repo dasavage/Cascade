@@ -16,8 +16,9 @@ namespace Cascade.Core.Cascade.User
         private int _credits;
         private int _pixels;
         private int _vipPoints;
+        private string _username;
 
-        public UserInformation(int userId, string authTicket, int lastOnline, string look, int rank, int credits, int pixels, int vipPoints)
+        public UserInformation(int userId, string authTicket, int lastOnline, string look, int rank, int credits, int pixels, int vipPoints, string username)
         {
             _userId = userId;
             _authTicket = authTicket;
@@ -27,6 +28,7 @@ namespace Cascade.Core.Cascade.User
             _credits = credits;
             _pixels = pixels;
             _vipPoints = vipPoints;
+            _username = username;
         }
 
         public int UserId
@@ -74,6 +76,12 @@ namespace Cascade.Core.Cascade.User
         {
             get { return _vipPoints; }
             set { _vipPoints = value; }
+        }
+
+        public string Username
+        {
+            get { return _username; }
+            set { _username = value; }
         }
     }
 }

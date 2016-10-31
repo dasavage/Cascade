@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Cascade.cs" />
     <Compile Include="Core\Cascade\CascadeProcess.cs" />
+    <Compile Include="Core\Cascade\CascadeUpdater.cs" />
     <Compile Include="Core\Cascade\User\UserInformation.cs" />
     <Compile Include="Core\Cascade\Utility.cs" />
     <Compile Include="Core\Config\ConfigManager.cs" />

@@ -13,6 +13,7 @@ namespace Cascade
         private static LogManager _logManager;
         private static ConfigManager _configManager;
         private static DatabaseManager _databaseManager;
+        private static CascadeUpdater _updater;
 
         private static readonly string _projectName = "Cascade Notification";
         private static readonly string _projectVersion = "3.0 BETA DEV";
@@ -68,6 +69,8 @@ namespace Cascade
 
             databaseStopwatch.Stop();
             _logManager.Log("Loaded MySQL [" + databaseStopwatch.ElapsedMilliseconds + "ms]", LogType.Information);
+
+            _updater = new CascadeUpdater();
 
             stopwatch.Stop();
             _logManager.Log("Cascade has loaded! [" + stopwatch.ElapsedMilliseconds + "ms]", LogType.Information);
