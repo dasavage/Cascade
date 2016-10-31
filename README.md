@@ -11,7 +11,7 @@ Cascade is a Habbo Notification system that will notifie you when something new 
 * Can now get notified when a user tries entering and they are banned (change of auth ticket + ban = true check)
 * Can now get notified when a new user is banned (checks for added records to ban table
 
-#### Updates 2.0:
+#### Updates 3.0:
 * Improved a lot of the codes quality.
 * Can now get notified when a user is ranked (change of rank).
 * Can now get notified if a users credits change.
